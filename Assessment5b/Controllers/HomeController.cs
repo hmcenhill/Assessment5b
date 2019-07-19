@@ -11,12 +11,12 @@ namespace Assessment5b.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ISession _session;
+        // private readonly ISession _session;
 
-        public HomeController(IHttpContextAccessor httpContextAccessor)
-        {
-            _session = httpContextAccessor.HttpContext.Session;
-        }
+        //public HomeController(IHttpContextAccessor httpContextAccessor)
+        //{
+        //    _session = httpContextAccessor.HttpContext.Session;
+        //}
 
 
 
@@ -33,17 +33,19 @@ namespace Assessment5b.Controllers
         [HttpPost]
         public IActionResult Item(int id)
         {
-            if (id == 1) _cart.Item1++;
+            // if (id == 1) _cart.Item1++;
             return View();
         }
 
-        public IActionResult Checkout()
+        public IActionResult Checkout(Cart _cart)
         {
+            if (_cart == null) _cart = new Cart();
+
             if (_cart.Item1 < 0) _cart.Item1 = 0;
             if (_cart.Item2 < 0) _cart.Item2 = 0;
             if (_cart.Item3 < 0) _cart.Item3 = 0;
 
-            return View();
+            return View(_cart);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
