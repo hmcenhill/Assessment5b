@@ -1,0 +1,21 @@
+﻿@model Assessment5b.Models.Cart
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<p>Item 1: @Model.Item1</p>
+<p>Item 2: @Model.Item2</p>
+<p>Item 3: @Model.Item3</p>
+
+<div class="form-group">
+    <input type="submit" value="Continue Shopping" class="btn btn-primary" />
+</div>
+
+@if (Model.Item1 + Model.Item2 + Model.Item3 != 0)
+{
+    <div class="form-group">
+        <input type="submit" value="Reset Cart" class="btn btn-primary" />
+    </div>
+}
